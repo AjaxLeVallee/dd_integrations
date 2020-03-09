@@ -1,3 +1,4 @@
+```
 NAME
     http_check -- check yaml
 
@@ -22,3 +23,4 @@ DESCRIPTION
     -m --monitor   create or update a monitor which is tagged with the team
                    name, such that the synthetic checks are associated with the
                    monitor.
+```
