@@ -1,2 +1,2 @@
-argparse
+click
 datadog-checks-base
