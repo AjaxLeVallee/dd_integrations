@@ -1,6 +1,8 @@
-#!/bin/usr/python3
+#!/env_3.7/bin/python3.7
 import click
 from datadog_checks.base import AgentCheck
+from monitoring import monitoring_class
+from validation import validation_class
 
 
 class Config(object):
