@@ -18,23 +18,6 @@ class Config(object):
 pass_config = click.make_pass_decorator(Config, ensure=True)
 
 
-class validation_class(object):
-
-    """All Validation related Objects"""
-
-    def __init__(self):
-        pass
-
-
-
-class montoring_class(object):
-
-    """All Monitoring related Objects"""
-
-    def __init__(self):
-        pass
-
-
 
 """
 Creating the inital group for the program
@@ -65,7 +48,6 @@ def validate(config, generate_checks):
     """Will validate and/or generate the checks for the yaml file given"""
     click.echo(bool(config.log_file))
     click.echo("CLI Checker")
-
 
 
 
