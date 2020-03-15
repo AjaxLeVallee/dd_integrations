@@ -12,7 +12,7 @@ class Config(object):
 
     def __init__(self):
         """Defining initialized variables"""
-        def_config = '/config'
+        def_config = '/configs'
         self.verbose = False
         self.log_file = False
         self.http_yaml_file = False

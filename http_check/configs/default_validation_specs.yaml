@@ -5,11 +5,12 @@
 # "team:teamname" tag
 # a name and url value
 #
-- check1: tags
-  vals:
-  - team
-  - teamname
-- check2: name & URL
-  vals:
-  - name
-  - url
+- check: tags
+  checktype: regex
+  regex: "team:.*"
+
+- check: name
+  checktype: content
+
+- check: url
+  checktype: content
