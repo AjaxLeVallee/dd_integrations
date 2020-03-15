@@ -1,0 +1,15 @@
+# I just wanted a place where this was loaded into an alterable dictionary
+# instead of it being hardcoded.
+#
+# Default checks as instructed are:
+# "team:teamname" tag
+# a name and url value
+#
+- check1: tags
+  vals:
+  - team
+  - teamname
+- check2: name & URL
+  vals:
+  - name
+  - url
