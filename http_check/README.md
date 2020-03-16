@@ -1,26 +1,19 @@
+# yamlCheck tool
+
+## Basic usage
 ```
-NAME
-    http_check -- check yaml
+Usage: yamlCheck [OPTIONS] COMMAND [ARGS]...
 
-SYNOPSIS
-    http_check [-l --validate] | [-c --checks] | [-m --monitor] teamname
+Options:
+  -v, --verbose
+  --help         Show this message and exit.
 
-DESCRIPTION
-
-
-    The options are as follows:
-
-    No Args        Return Help content.
-
-    -h --help      Run help dialog
-
-    -l --validate  Print out a summary of good, warning, and critical checks
-                   (count); print out critical checks with their error noted.
-
-    -c --checks    Run validation and create a corresponding Datadog Synthetic
-                   check.
-
-    -m --monitor   create or update a monitor which is tagged with the team
-                   name, such that the synthetic checks are associated with the
-                   monitor.
+Commands:
+  monitor   Will validate or raise errors in datadog yaml file
+  validate  Will validate and/or generate the checks for the yaml file given
 ```
+
+## Installation
+
+Clone repo
+`make build`
