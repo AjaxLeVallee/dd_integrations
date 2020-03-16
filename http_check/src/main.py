@@ -35,7 +35,7 @@ Creating the inital group for the program
 @click.option('--verbose', '-v',
     is_flag=True)
 @pass_config
-def cli(config, verbose):# logfile):
+def cli(config, verbose):
     config.verbose = verbose
 
 
@@ -73,8 +73,6 @@ Monitor config has a slightly different function so it was broken out
 @click.argument("http_yaml",
     required=False,
     type=click.Path(exists=True))
-@click.argument("log_file",
-     required=False)
 @pass_config
 def monitor(config, http_yaml):
     """Will validate or raise errors in datadog yaml file"""

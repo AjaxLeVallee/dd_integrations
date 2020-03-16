@@ -9,6 +9,7 @@ setup(
       install_requires=[
           'Click',
           'datadog-checks-base',
+          'pyyaml',
       ],
       entry_points='''
           [console_scripts]
