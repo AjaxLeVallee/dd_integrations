@@ -1,7 +1,6 @@
 #!/env_3.7/bin/python3.7
 import click
 import os
-from datadog_checks.base import AgentCheck
 from monitoring import monitoring_class
 from validation import validation_class
 
@@ -14,7 +13,6 @@ class Config(object):
         """Defining initialized variables"""
         def_config = '/configs'
         self.verbose = False
-        self.log_file = False
         self.http_yaml_file = False
         self.config_specs = False
         try:
@@ -53,21 +51,18 @@ another that could be toggled off or on.
 @click.argument("http_yaml",
     type=click.File('rb'),
     required=True)
-@click.argument("out_log",
-    required=False)
 @click.argument("validation_config",
     type=click.File('rb'),
     required=False)
 @pass_config
-def validate(config, checks, http_yaml, out_log, validation_config):
+def validate(config, checks, http_yaml, validation_config):
     """Will validate and/or generate the checks for the yaml file given"""
     validation_spec = (validation_config or config.config_specs)
-    validation = validation_class(config.verbose, http_yaml, out_log, validation_spec)
+    validation = validation_class(config.verbose, http_yaml, validation_spec)
 
     validation.validate()
     if checks and validation.validate:
         return validation.checks
-
 
 
 """
@@ -81,7 +76,7 @@ Monitor config has a slightly different function so it was broken out
 @click.argument("log_file",
      required=False)
 @pass_config
-def monitor(config, http_yaml, out_log):
+def monitor(config, http_yaml):
     """Will validate or raise errors in datadog yaml file"""
     return monitoring_class()
 

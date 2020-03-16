@@ -2,9 +2,10 @@
 import yaml
 import os
 import re
-
+from config_logging import Logging
 from formatting import basic
 
+log = Logging()
 
 B = basic().BOLD
 U = basic().UNDERLINE
@@ -16,10 +17,9 @@ class validation_class(object):
 
     """All Validation related Objects"""
 
-    def __init__(self, verbose, http_yaml=False, out_log=False, validation_spec=False):
+    def __init__(self, verbose, http_yaml=False, validation_spec=False):
         self.verbose = (verbose or False)
         self.http_yaml = (http_yaml or False)
-        self.out_log = (out_log or False)
         self.validation_specs = (validation_spec or False)
 
 
@@ -31,6 +31,7 @@ class validation_class(object):
 
         """
         def regex_check(regex, element, data):
+
             if data.get(element):
                 for t in data[element]:
                     try:
@@ -39,12 +40,13 @@ class validation_class(object):
                         if re.search(regex, t):
                             if self.verbose:
                                 print(f"{data['name']} check is all set with {t} as the tag")
+                        log.GOOD(f"check: {U}{data['name']}{E} has team tag: {B}{t}{E}")
                         break
                     except Exception as e:
                         raise e
-                        print(f"{U + data['name'] + E} check does not have a valid tag")
+                        log.CRIT(f"{U + data['name'] + E} check does not have a valid tag")
             else:
-                print(f"{R}Error No {element} for check: {U + data['name'] + E}")
+                log.CRIT(f"{R}Error No {element} for check: {U + data['name'] + E}")
 
 
         def content_check(element, data):
@@ -83,11 +85,9 @@ class validation_class(object):
                                print(f"{check['check']} check {B}Finished{E}")
 
 
-
+# This is the validate main thread, this function could be broken out more
         if self.verbose:
             print(f"Performing Validation of yaml at {self.http_yaml.name}")
-#            __import__('pdb').set_trace()
-
 
         with open(self.http_yaml.name) as f:
             yamls = yaml.load_all(f, Loader=yaml.FullLoader)
@@ -96,6 +96,7 @@ class validation_class(object):
                 if type(yaml_f) is list:
                     for key in yaml_f:
                         process(self, key)
+        log.report()
 
 
 
