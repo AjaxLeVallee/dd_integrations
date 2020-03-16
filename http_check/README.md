@@ -2,6 +2,7 @@
 
 ## Basic usage
 ```
+
 Usage: yamlCheck [OPTIONS] COMMAND [ARGS]...
 
 Options:
@@ -15,5 +16,20 @@ Commands:
 
 ## Installation
 
+```
 Clone repo
-`make build`
+make build
+source ./env_3.7/bin/activate
+```
+
+## Light reading
+
+The main command yamlCheck, has two sub commands, validate and monitor.
+
+Thinking about the check generation I was thinking this should be a flag used as
+it was running the validation step anyway, so it's off by default but if you
+would like it to generate a synthetic check add the flag to the command.
+From a usability standpoint the flag could be longer, to be more descriptive
+like: `--generate-checks` (which is why the shorthand is `-g`) this could be
+changed down the road though.
+
