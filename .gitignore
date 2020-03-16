@@ -1,4 +1,12 @@
+# Basic Mac and neovim editing files
 .swo
 .swp
 .DS_Store
 
+# Python environment artifacts
+env*/
+__pycache__*
+*egg-info
+
+# Naming schemes for other files
+ext_*

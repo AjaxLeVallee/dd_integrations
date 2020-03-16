@@ -1,0 +1,16 @@
+# I just wanted a place where this was loaded into an alterable dictionary
+# instead of it being hardcoded.
+#
+# Default checks as instructed are:
+# "team:teamname" tag
+# a name and url value
+#
+- check: tags
+  checktype: regex
+  regex: "team:.*"
+
+- check: name
+  checktype: content
+
+- check: url
+  checktype: content
