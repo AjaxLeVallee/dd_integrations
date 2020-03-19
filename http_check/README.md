@@ -1,5 +1,7 @@
 # yamlCheck tool
 
+It's at about this point that I've put in about 8-10hrs of work, f95a7a6e7b5e242d4e4f1de94938097e6bb2678e
+
 ## Basic usage
 ```
 
